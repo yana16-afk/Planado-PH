@@ -8,11 +8,9 @@ $year = isset($_GET['year']) ? (int)$_GET['year'] : date('Y');
 $month = isset($_GET['month']) ? (int)$_GET['month'] : date('n');
 $baseDate = null;
 
-// Use date passed from JS if available
 if (!empty($_GET['base'])) {
     $baseDate = new DateTime($_GET['base']);
 } else {
-    // Otherwise load last selected date from DB
     $stmt = $pdo->prepare("SELECT last_menstruation_date FROM user_menstruation WHERE user_id = :uid");
     $stmt->execute(['uid' => $user_id]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -55,16 +53,13 @@ if ($baseDate) {
     }
 }
 
-// Generate calendar table
 echo "<table><tr>";
 $days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 foreach ($days as $d) echo "<th>$d</th>";
 echo "</tr><tr>";
 
-// Padding for first day
 for ($i = 0; $i < $startWeekday; $i++) echo "<td class='white'></td>";
 
-// Dates
 for ($day = 1; $day <= $daysInMonth; $day++) {
     $class = 'white';
     if (in_array($day, $menstruation)) {
@@ -75,7 +70,6 @@ for ($day = 1; $day <= $daysInMonth; $day++) {
 
     echo "<td class='$class' onclick='selectDate($day)'>$day</td>";
 
-    // Wrap to next week
     if (($startWeekday + $day) % 7 == 0) echo "</tr><tr>";
 }
 
