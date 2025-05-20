@@ -2,7 +2,6 @@
 require 'db.php';
 session_start();
 
-// Replace this with session-based user ID in real use
 $user_id = $_SESSION['user_id'] ?? 1;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -137,12 +137,9 @@ $age = $_SESSION['age'];
      .then(response => response.text())
      .then(data => {
           console.log(data); // For debugging
-          // Reload calendar with selected date
           loadCalendar(current.getFullYear(), current.getMonth() + 1, formatted);
      });
      }
-
-     // Initial load
      window.onload = () => loadCalendar(current.getFullYear(), current.getMonth() + 1);
      </script>
 </body>

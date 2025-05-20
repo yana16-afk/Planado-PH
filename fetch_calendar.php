@@ -2,7 +2,7 @@
 require 'db.php';
 session_start();
 
-$user_id = $_SESSION['user_id'] ?? 1; // Replace with actual session-based login
+$user_id = $_SESSION['user_id'] ?? 1; 
 
 $year = isset($_GET['year']) ? (int)$_GET['year'] : date('Y');
 $month = isset($_GET['month']) ? (int)$_GET['month'] : date('n');
@@ -21,7 +21,6 @@ if (!empty($_GET['base'])) {
     }
 }
 
-// Prepare days
 $firstDay = new DateTime("$year-$month-01");
 $startWeekday = (int)$firstDay->format('w'); // Sunday = 0
 $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
@@ -29,7 +28,6 @@ $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
 $menstruation = [];
 $ovulation = [];
 
-// Only calculate ranges if base date is known
 if ($baseDate) {
     $cycleLength = 28;
     $menstruationLength = 5;
