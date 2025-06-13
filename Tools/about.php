@@ -95,5 +95,42 @@ session_start();
             <a href="register.php" class="btn-white">Get Started</a>
         </section>
     </main>
+
+    <footer class="modern-footer">
+  <div class="footer-main">
+    <!-- Branding -->
+    <div class="footer-column footer-logo-column">
+      <img src="images/whitelogo.png" alt="Planado PH Logo" class="footer-logo">
+      <p class="footer-tagline">Kapag sigurado, Gawing PLANADO!</p>
+    </div>
+
+    <!-- Tools Links -->
+    <div class="footer-column">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="tools.php">Ovulation Tracker</a></li>
+        <li><a href="reminder.php">Reminder</a></li>
+        <li><a href="due-date-calculator.php">Due Date Calculator</a></li>
+      </ul>
+    </div>
+
+    <!-- About Links -->
+    <div class="footer-column">
+      <h4>About</h4>
+      <ul>
+        <li><a href="about.php">Our Mission</a></li>
+        <li><a href="resources.php">Resources</a></li>
+        <li><a href="privacy.php">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>&copy; 2025 Planado PH. All rights reserved.</p>
+  </div>
+</footer>
+
+
 </body>
 </html>

@@ -452,14 +452,6 @@ body {
     }
 
 
-    footer {
-      background-color: #BA90C6;
-      color: white;
-      text-align: center;
-      padding: 1.5rem;
-      margin-top: 3rem;
-    }
-
 /* ========================================
    RESPONSIVE STYLES
 ======================================== */
@@ -891,5 +883,103 @@ body {
 
   .challenges-section, .action-section {
       padding: 2rem;
+  }
+}
+
+/* ========================================
+   FOOTER STYLES
+======================================== */
+  .modern-footer {
+    background: linear-gradient(to top, #873392, #b37ac2);
+    color: white;
+    padding: 3rem 2rem 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .footer-main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+  }
+  
+  .footer-column {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .footer-logo-column .footer-logo {
+    width: 250px;
+  }
+  
+  .footer-tagline {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    color: #eee;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .footer-column h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-column ul li a {
+    color: #f0e9ff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-column ul li a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #f3eaff;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 1rem;
+  }
+  
+
+/* ========================================
+   RESPONSIVE FOOTER
+======================================== */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-right {
+    background-position: center;
+    width: 100%;
+    min-height: 150px;
+    margin-top: 1.5rem;
+  }
+
+  .footer-links,
+  .footer-branding {
+    align-items: center;
+    justify-content: center;
   }
 }
