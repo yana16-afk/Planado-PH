@@ -6,19 +6,20 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Planado PH</title>
+    <title>About Us</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="header">
+    <header class="header">
         <div class="logo">
-          <a href="about.php"></a>
+          <a href="about.php">
             <img src="images/logo.png" class="logo-icon" alt="Planado PH Logo">
           </a>
         </div>
         <nav class="nav">
             <a href="index.php">Home</a>
+            <a href="contraceptives.php">Contraceptives</a>
             <a href="tools.php">Tools</a>
             <a href="resources.php">Resources</a>
             <a href="about.php">About</a>
@@ -120,7 +121,6 @@ session_start();
       <ul>
         <li><a href="about.php">Our Mission</a></li>
         <li><a href="resources.php">Resources</a></li>
-        <li><a href="privacy.php">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
