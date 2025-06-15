@@ -163,8 +163,10 @@
 }
 
 .article-card img {
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  height: 180px; 
+  object-fit: cover;
+  border-radius: 10px;
   margin-bottom: 1rem;
 }
 
@@ -254,27 +256,27 @@
   <h2>Related Articles</h2>
   <div class="article-scroll-container">
     <div class="article-card">
-      <img src="images/article-icon1.png" alt="Article Icon">
+      <img src="images/8.png" alt="Article Icon">
       <a href="https://www.doctoranywhere.ph/post/family-planning" target="_blank">Healthcare for Her: Understanding Family Planning Methods</a>
     </div>
     <div class="article-card">
-      <img src="images/article-icon2.png" alt="Article Icon">
+      <img src="images/9.png" alt="Article Icon">
       <a href="https://trust.ph/" target="_blank">Modern Methods Of Contraception</a>
     </div>
     <div class="article-card">
-      <img src="images/article-icon3.png" alt="Article Icon">
+      <img src="images/11.png" alt="Article Icon">
       <a href="https://www.who.int/news-room/fact-sheets/detail/family-planning-contraception" target="_blank">Family Planning / Contraception Methods</a>
     </div>
     <div class="article-card">
-      <img src="images/article-icon4.png" alt="Article Icon">
+      <img src="images/10.png" alt="Article Icon">
       <a href="https://upd.edu.ph/1-in-3-pinays-use-traditional-over-modern-contraceptives/" target="_blank">1 in 3 Pinays use traditional over modern contraceptives - UP Diliman</a>
     </div>
     <div class="article-card">
-      <img src="images/article-icon5.png" alt="Article Icon">
+      <img src="images/12.png" alt="Article Icon">
       <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6657820/" target="_blank">Barriers to Contraception in the Philippines - PMC</a>
     </div>
     <div class="article-card">
-      <img src="images/article-icon6.png" alt="Article Icon">
+      <img src="images/13.png" alt="Article Icon">
       <a href="Guide on Birth Control Methods in the Philippines | Kindred" target="_blank">Guide on Birth Control Methods in PH | Kindred</a>
     </div>
   </div>
