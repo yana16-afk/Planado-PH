@@ -277,7 +277,7 @@
     </div>
     <div class="article-card">
       <img src="images/13.png" alt="Article Icon">
-      <a href="Guide on Birth Control Methods in the Philippines | Kindred" target="_blank">Guide on Birth Control Methods in PH | Kindred</a>
+      <a href="https://mykindred.co/blogs/guides/birth-control-methods-philippines" target="_blank">Guide on Birth Control Methods in PH | Kindred</a>
     </div>
   </div>
 </section>
