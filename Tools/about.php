@@ -11,6 +11,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  
     <header class="header">
         <div class="logo">
           <a href="index.php">
@@ -40,7 +41,6 @@ session_start();
     <a href="login.php" class="sign-in-btn">Sign In</a>
   <?php endif; ?>
 </nav>
-
     </header>
 
     <main class="main-content">

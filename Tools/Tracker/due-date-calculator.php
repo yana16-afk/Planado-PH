@@ -21,7 +21,9 @@ function ordinal($n) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Due Date Calculator</title>
+  <link rel="stylesheet" href="../style.css">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -40,20 +42,7 @@ function ordinal($n) {
     .logo img {
       height: 60px;
     }
-    .nav {
-      display: flex;
-      gap: 2rem;
-    }
-    .nav a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 1.3rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    .nav a:hover, .nav a.active {
-      color: #6B3A7C;
-    }
+    
     main {
       padding: 2rem 4rem;
       max-width: 1200px;
@@ -311,14 +300,42 @@ function ordinal($n) {
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="logo"><img src="../images/logo.png" alt="Logo" class="logo-icon"></div>
-    <nav class="nav">
-      <a href="../index.php">Home</a>
-      <a href="ovulation-tracker.php">Ovulation Tracker</a>
-      <a href="due-date-calculator.php" class="active">Due-date Calculator</a>
-    </nav>
-  </header>
+
+
+
+
+
+<header class="header">
+  <div class="logo">
+    <a href="../index.php">
+      <img src="../images/logo.png" class="logo-icon" alt="Planado PH Logo">
+    </a>
+  </div>
+  <nav class="nav">
+    <a href="../index.php">Home</a>
+    <a href="../tools.php">Tools</a>
+    <a href="../resources.php">Resources</a>
+    <a href="../about.php">About</a>
+
+    <?php if (isset($_SESSION['user_id'])): 
+      $user_name = $_SESSION['user_name'];
+      $initials = strtoupper(substr($user_name, 0, 2));
+    ?>
+      <div class="user-profile">
+        <div class="user-avatar"><?= htmlspecialchars($initials) ?></div>
+        <div class="user-name"><?= htmlspecialchars($user_name) ?></div>
+        <div class="dropdown-arrow">▼</div>
+        <div class="user-dropdown">
+          <a href="../user-profile.php">My Profile</a>
+          <a href="../logout.php">Sign Out</a>
+        </div>
+      </div>
+    <?php else: ?>
+      <a href="../login.php" class="sign-in-btn">Sign In</a>
+    <?php endif; ?>
+  </nav>
+</header>
+
 
   <main>
     <h1>Pregnancy Due Date Calculator</h1>

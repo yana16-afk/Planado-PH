@@ -20,17 +20,14 @@ if (!$lastDate) {
 try {
     $lastDateObj = new DateTime($lastDate);
     
-    // Get user's cycle data or use defaults
     $stmt = $pdo->prepare("SELECT cycle_length, menstruation_duration, luteal_phase_length FROM user_cycle_data WHERE user_id = ? ORDER BY updated_at DESC LIMIT 1");
     $stmt->execute([$userId]);
     $existingData = $stmt->fetch(PDO::FETCH_ASSOC);
     
-    // Calculate average cycle length from history if available
     $stmt = $pdo->prepare("SELECT AVG(cycle_length) as avg_cycle, AVG(menstruation_duration) as avg_duration FROM cycle_history WHERE user_id = ? AND cycle_length IS NOT NULL");
     $stmt->execute([$userId]);
     $historyData = $stmt->fetch(PDO::FETCH_ASSOC);
     
-    // Use historical averages if available, otherwise defaults
     $cycleLength = 28;
     $menstruationDuration = 5;
     $lutealPhase = 14;
@@ -44,7 +41,6 @@ try {
         $lutealPhase = $existingData['luteal_phase_length'] ?: 14;
     }
     
-    // Flo.health-like calculations
     
     // 1. Fertile window: typically 6 days (5 days before ovulation + ovulation day)
     $ovulationDay = $cycleLength - $lutealPhase; // Usually day 14 for 28-day cycle
@@ -71,7 +67,6 @@ try {
     $nextMenstruationEnd = clone $nextMenstruationStart;
     $nextMenstruationEnd->modify("+{$menstruationDuration} days");
     
-    // Format dates
     $fertileStartStr = $fertileWindowStart->format('Y-m-d');
     $fertileEndStr = $fertileWindowEnd->format('Y-m-d');
     $ovStartStr = $ovulationStart->format('Y-m-d');
@@ -79,7 +74,6 @@ try {
     $menStartStr = $nextMenstruationStart->format('Y-m-d');
     $menEndStr = $nextMenstruationEnd->format('Y-m-d');
     
-    // Check if record exists
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM user_cycle_data WHERE user_id = ?");
     $stmt->execute([$userId]);
     $exists = $stmt->fetchColumn() > 0;
@@ -116,7 +110,6 @@ try {
         ]);
     }
     
-    // Add to cycle history for better future predictions
     $stmt = $pdo->prepare("INSERT INTO cycle_history (user_id, cycle_start_date, cycle_length, menstruation_duration) 
                           VALUES (?, ?, ?, ?) 
                           ON DUPLICATE KEY UPDATE 

@@ -11,7 +11,6 @@ if (!isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 
 try {
-    // Get main cycle data
     $stmt = $pdo->prepare("SELECT 
         last_menstruation_date, 
         cycle_length,
@@ -30,22 +29,6 @@ try {
     $stmt->execute([$userId]);
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
     
-    // Get daily logs for symptoms and flow data
-    $stmt = $pdo->prepare("SELECT 
-        log_date, 
-        flow_intensity, 
-        symptoms, 
-        mood, 
-        temperature, 
-        cervical_mucus 
-        FROM daily_logs 
-        WHERE user_id = ? 
-        AND log_date >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH)
-        ORDER BY log_date DESC");
-    $stmt->execute([$userId]);
-    $dailyLogs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    // Get cycle statistics
     $stmt = $pdo->prepare("SELECT 
         AVG(cycle_length) as avg_cycle_length,
         MIN(cycle_length) as min_cycle_length,
@@ -57,6 +40,19 @@ try {
         AND cycle_length IS NOT NULL");
     $stmt->execute([$userId]);
     $stats = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $stmt = $pdo->prepare("SELECT 
+        reminder_date, 
+        reminder_time, 
+        method_type, 
+        is_completed 
+        FROM contraceptive_reminders 
+        WHERE user_id = ? 
+        AND reminder_date >= CURDATE() 
+        AND reminder_date <= DATE_ADD(CURDATE(), INTERVAL 6 MONTH)
+        ORDER BY reminder_date ASC");
+    $stmt->execute([$userId]);
+    $reminders = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     if ($data) {
         $response = [
@@ -70,14 +66,14 @@ try {
             'fertile_window_end' => $data['fertile_window_end'],
             'menstruation_start' => $data['menstruation_start'],
             'menstruation_end' => $data['menstruation_end'],
-            'daily_logs' => $dailyLogs,
             'statistics' => [
                 'avg_cycle_length' => $stats['avg_cycle_length'] ? round($stats['avg_cycle_length'], 1) : null,
                 'cycle_range' => $stats['min_cycle_length'] && $stats['max_cycle_length'] ? 
                     [$stats['min_cycle_length'], $stats['max_cycle_length']] : null,
                 'avg_period_length' => $stats['avg_period_length'] ? round($stats['avg_period_length'], 1) : null,
                 'total_cycles_tracked' => (int)$stats['total_cycles']
-            ]
+            ],
+            'reminders' => $reminders
         ];
     } else {
         $response = [
@@ -91,13 +87,13 @@ try {
             'fertile_window_end' => null,
             'menstruation_start' => null,
             'menstruation_end' => null,
-            'daily_logs' => $dailyLogs,
             'statistics' => [
                 'avg_cycle_length' => null,
                 'cycle_range' => null,
                 'avg_period_length' => null,
                 'total_cycles_tracked' => 0
-            ]
+            ],
+            'reminders' => $reminders
         ];
     }
     

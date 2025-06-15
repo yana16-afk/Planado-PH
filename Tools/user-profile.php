@@ -190,6 +190,67 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   background: url('images/userprof-bg.png') no-repeat center center fixed;
   background-size: cover;
 }
+  .floating-deco {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: 0;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .deco1 {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #ffd6e8, #fbd0e5);
+    top: 10%;
+    left: 5%;
+  }
+
+  .deco2 {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #ffe4f2, #f9c9de);
+    bottom: 15%;
+    right: 8%;
+  }
+
+  .deco3 {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #ffecf5, #fcd2e8);
+    top: 50%;
+    right: 15%;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .glow-ring {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 0 0 40px 10px #f8b9d4;
+    opacity: 0.2;
+    z-index: 0;
+  }
+
+  .glow1 {
+    top: 0;
+    left: 0;
+  }
+
+  .glow2 {
+    bottom: 0;
+    right: 0;
+  }
+
+  .profile-container {
+    position: relative;
+    z-index: 2;
+  }
   </style>
 </head>
 <body>
@@ -220,6 +281,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </nav>
 </header>
 
+<div class="floating-deco deco2"></div>
+<div class="floating-deco deco3"></div>
+<div class="glow-ring glow1"></div>
+<div class="glow-ring glow2"></div>
 <main class="main-content">
   <?php if (isset($_GET['success'])): ?>
     <div class="popup <?= $_GET['success'] === '1' ? 'success' : 'error' ?>">

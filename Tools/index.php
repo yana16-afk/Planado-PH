@@ -145,7 +145,7 @@ if (isset($_SESSION['success'])) {
                     <div class="tool-icon">
                         <img src="images/pills.png" alt="Pills Icon">
                     </div>
-                    <a href="reminder.php" class="tool-button">
+                    <a href="Tracker/reminder.php" class="tool-button">
                         Reminder
                     </a>
                 </div>
@@ -174,7 +174,7 @@ if (isset($_SESSION['success'])) {
       <h4>Tools</h4>
       <ul>
         <li><a href="Tracker/ovulation-tracker.php">Ovulation Tracker</a></li>
-        <li><a href="reminder.php">Reminder</a></li>
+        <li><a href="Tracker/reminder.php">Reminder</a></li>
         <li><a href="Tracker/due-date-calculator.php">Due Date Calculator</a></li>
       </ul>
     </div>

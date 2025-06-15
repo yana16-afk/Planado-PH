@@ -11,12 +11,10 @@ if (!isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Update cycle settings
     $cycleLength = (int)($_POST['cycle_length'] ?? 28);
     $menstruationDuration = (int)($_POST['menstruation_duration'] ?? 5);
     $lutealPhase = (int)($_POST['luteal_phase_length'] ?? 14);
     
-    // Validate inputs
     if ($cycleLength < 21 || $cycleLength > 35) {
         http_response_code(400);
         echo json_encode(['error' => 'Cycle length must be between 21 and 35 days']);
@@ -36,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     try {
-        // Update existing record
         $stmt = $pdo->prepare("UPDATE user_cycle_data 
             SET cycle_length = ?, 
                 menstruation_duration = ?, 
@@ -45,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             WHERE user_id = ?");
         $stmt->execute([$cycleLength, $menstruationDuration, $lutealPhase, $userId]);
         
-        // If no rows were affected, create new record
         if ($stmt->rowCount() == 0) {
             $stmt = $pdo->prepare("INSERT INTO user_cycle_data 
                 (user_id, cycle_length, menstruation_duration, luteal_phase_length, last_menstruation_date) 
@@ -61,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
 } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Get current settings
     try {
         $stmt = $pdo->prepare("SELECT cycle_length, menstruation_duration, luteal_phase_length 
             FROM user_cycle_data WHERE user_id = ? ORDER BY updated_at DESC LIMIT 1");

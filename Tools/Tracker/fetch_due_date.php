@@ -8,9 +8,8 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 try {
-    // Use the same database connection file as your other scripts
-    require_once '../planado_db.php'; // or use 'db.php' if that's your main connection file
 
+    require_once '../planado_db.php'; 
     $stmt = $pdo->prepare("SELECT due_date FROM due_dates WHERE user_id = ? LIMIT 1");
     $stmt->execute([$_SESSION['user_id']]);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
