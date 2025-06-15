@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "root"; // Remove pw if using XAMPP
-// $password = ""; // Use this line if you are using XAMPP
+//$password = "root"; // Remove pw if using XAMPP
+$password = ""; // Use this line if you are using XAMPP
 $dbname = "planado_db";
 $charset = 'utf8mb4';
 
