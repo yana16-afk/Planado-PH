@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'auth_check.php';
 require_once 'planado_db.php';
 
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {

@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once 'planado_db.php';
+
 // Check if user is logged in
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
     // Redirect to login page if not logged in
