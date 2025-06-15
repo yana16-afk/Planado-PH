@@ -47,17 +47,17 @@
         <div class="article-content">
           <h3>Pregnancy & Preconception</h3>
           <p>Discover important steps to prepare your body and mind for a healthy pregnancy, including nutrition and medical care. Understand the early signs of pregnancy and what to expect during each trimester.</p>
-          <a href="#" class="read-more">Read More</a>
+          <a href="Preg_article.html" class="read-more">Read More</a>
         </div>
       </div>
 
       <div class="article-card">
         <div class="article-image">
-          <img src="images/Family.png" alt="Family Planning & Reproductive Health">
+          <img src="images/Family.png" alt="Family Planning">
         </div>
         <div class="article-content">
-          <h3>Family Planning & Reproductive Health</h3>
-          <p>Family planning empowers individuals and couples to decide freely and responsibly about having children. This section covers reproductive health basics, fertility awareness, and the benefits of planned parenthood.</p>
+          <h3>Family Planning</h3>
+          <p>Family planning empowers individuals and couples to decide freely and responsibly about having children. This section covers fertility awareness and benefits of planned parenthood.</p>
           <a href="#" class="read-more">Read More</a>
         </div>
       </div>
@@ -72,6 +72,17 @@
           <a href="#" class="read-more">Read More</a>
         </div>
       </div>
+
+    <div class="article-card">
+      <div class="article-image">
+        <img src="images/reproductivehealth.png" alt="Reproductive Health">
+      </div>
+      <div class="article-content">
+        <h3>Reproductive Health</h3>
+        <p>Explore the essentials of reproductive health, including how your body works, fertility tracking, and the importance of informed and intentional parenthood choices for a healthier future.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+    </div>
 
       <div class="article-card">
         <div class="article-image">
