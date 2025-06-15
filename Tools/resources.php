@@ -10,13 +10,12 @@
 <body>
     <header class="header">
         <div class="logo">
-          <a href="resources.php">
+          <a href="index.php">
             <img src="images/logo.png" class="logo-icon" alt="Planado PH Logo">
           </a>
         </div>
         <nav class="nav">
             <a href="index.php">Home</a>
-            <a href="contraceptives.php">Contraceptives</a>
             <a href="tools.php">Tools</a>
             <a href="resources.php">Resources</a>
             <a href="about.php">About</a>
@@ -37,7 +36,7 @@
         <div class="article-content">
           <h3>Contraception & Birth Control</h3>
           <p>Learn about the various contraceptive methods available, how they work, and which options might be best for you. This section aims to dispel myths and provide clear facts to help you take control of your reproductive health.</p>
-          <a href="#" class="read-more">Read More</a>
+          <a href="contraceptives.php" class="read-more">Read More</a>
         </div>
       </div>
 

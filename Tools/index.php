@@ -19,7 +19,6 @@ session_start();
         </div>
         <nav class="nav">
             <a href="index.php">Home</a>
-            <a href="contraceptives.php">Contraceptives</a>
             <a href="tools.php">Tools</a>
             <a href="resources.php">Resources</a>
             <a href="about.php">About</a>
