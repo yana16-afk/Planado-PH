@@ -186,6 +186,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     /* Fix overlapping dropdown */
     .nav { z-index: 10; position: relative; }
+    body {
+  background: url('images/userprof-bg.png') no-repeat center center fixed;
+  background-size: cover;
+}
   </style>
 </head>
 <body>
