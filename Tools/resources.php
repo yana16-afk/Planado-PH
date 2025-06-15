@@ -81,7 +81,7 @@ $initials = $user_name ? strtoupper(substr($user_name, 0, 2)) : null;
           <h3>Pregnancy & Preconception</h3>
           <p>Discover important steps to prepare your body and mind for a healthy pregnancy, including nutrition and
             medical care. Understand the early signs of pregnancy and what to expect during each trimester.</p>
-          <a href="Preg_article.html" class="read-more">Read More</a>
+          <a href="Preg_article.php" class="read-more">Read More</a>
         </div>
       </div>
 

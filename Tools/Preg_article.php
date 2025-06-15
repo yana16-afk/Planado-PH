@@ -1,3 +1,8 @@
+<?php
+session_start();
+$user_name = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null;
+$initials = $user_name ? strtoupper(substr($user_name, 0, 2)) : null;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -262,20 +267,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-          <a href="index.php">
-            <img src="images/logo.png" class="logo-icon" alt="Planado PH Logo">
-          </a>
+
+
+
+<header class="header">
+  <div class="logo">
+    <a href="index.php">
+      <img src="images/logo.png" class="logo-icon" alt="Planado PH Logo">
+    </a>
+  </div>
+  <nav class="nav">
+    <a href="index.php">Home</a>
+    <a href="tools.php">Tools</a>
+    <a href="resources.php">Resources</a>
+    <a href="about.php">About</a>
+
+    <?php if ($user_name): ?>
+      <div class="user-profile">
+        <div class="user-avatar"><?= htmlspecialchars($initials) ?></div>
+        <div class="user-name"><?= htmlspecialchars($user_name) ?></div>
+        <div class="dropdown-arrow">▼</div>
+        <div class="user-dropdown">
+          <a href="user-profile.php">My Profile</a>
+          <a href="logout.php">Sign Out</a>
         </div>
-        <nav class="nav">
-            <a href="index.php">Home</a>
-            <a href="tools.php">Tools</a>
-            <a href="resources.php">Resources</a>
-            <a href="about.php">About</a>
-            <a href="login.php" class="sign-in-btn">Sign In</a>
-        </nav>
-    </header>
+      </div>
+    <?php else: ?>
+      <a href="login.php" class="sign-in-btn">Sign In</a>
+    <?php endif; ?>
+  </nav>
+</header>
+
+
 
 
       <main class="content-page">
