@@ -76,7 +76,7 @@
           <h3>Pregnancy & Preconception</h3>
           <p>Discover important steps to prepare your body and mind for a healthy pregnancy, including nutrition and
             medical care. Understand the early signs of pregnancy and what to expect during each trimester.</p>
-          <a href="Preg_article.html" class="read-more">Read More</a>
+          <a href="Pregnancy.php" class="read-more">Read More</a>
         </div>
       </div>
 
@@ -112,7 +112,7 @@
           <h3>Reproductive Health</h3>
           <p>Explore the essentials of reproductive health, including how your body works, fertility tracking, and the
             importance of informed and intentional parenthood choices for a healthier future.</p>
-          <a href="#" class="read-more">Read More</a>
+          <a href="reproductive.php" class="read-more">Read More</a>
         </div>
       </div>
 
