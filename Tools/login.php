@@ -15,8 +15,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_name'] = $user['name'];
+        
+        // Check if there's a redirect URL from auth_check.php
+        if (isset($_GET['redirect']) && !empty($_GET['redirect'])) {
+            $redirect_url = $_GET['redirect'];
+            
+            // Validate the redirect URL for security (optional but recommended)
+            $allowed_redirects = [
+                'tools.php',
+                'user-profile.php',
+                'Tools/Tracker/ovulation-tracker.php',
+                'Tools/Tracker/reminder.php',
+                'Tools/Tracker/due-date-calculator.php'
+            ];
+            
+            // If redirect URL is in allowed list, redirect there
+            if (in_array($redirect_url, $allowed_redirects)) {
+                header("Location: " . $redirect_url);
+                exit();
+            } else {
+                // Debug: show what redirect was attempted (remove after testing)
+                $error = "Invalid redirect: " . htmlspecialchars($redirect_url);
+            }
+        }
+        
+        // Default redirect to home page
         header("Location: index.php");
-        exit;
+        exit();
     } else {
         $error = "Invalid email or password.";
     }
@@ -215,8 +240,7 @@ button:hover {
 
         <div class="form-group">
             <label for="password">Password *</label>
-<input type="password" id="password" name="password" required />
-
+            <input type="password" id="password" name="password" required />
         </div>
 
         <button type="submit">Login</button>
