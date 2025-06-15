@@ -1,12 +1,15 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Youth & Community Education</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
 .banner_youth {
   border-radius: 20px;
@@ -49,124 +52,133 @@
   line-height: 1.5;
 }
 
-.youth-banner-image {
-  width: 400px;
-  height: 260px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .youth-banner-image {
+      width: 400px;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.youth-banner-image img {
-  width: 80%;
-  height: auto;
-  object-fit: contain;
-}
+    .youth-banner-image img {
+      width: 80%;
+      height: auto;
+      object-fit: contain;
+    }
 
-  .youth-programs {
-    padding: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .youth-programs h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: #66173D;
-  }
-  .program-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-  .program-card {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(56, 14, 91, 0.1);
-    padding: 2rem;
-    text-align: center;
-  }
-  .program-card h3 {
-    color: #B75196;
-    margin-bottom: 0.5rem;
-  }
-  .program-card p {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 1rem;
-  }
-  .program-card a {
-    color: #66173D;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  .program-card a:hover {
-    text-decoration: underline;
-  }
+    .youth-programs {
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
 
-  .related-articles-section{
-    padding: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .related-articles-section h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: #66173D;
-  }
-  .article-card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
+    .youth-programs h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #66173D;
+    }
 
-.article-card-v2 {
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(56, 14, 91, 0.1);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
 
-.article-card-v2 img {
-    width: 100%;
+    .program-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(56, 14, 91, 0.1);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .program-card h3 {
+      color: #B75196;
+      margin-bottom: 0.5rem;
+    }
+
+    .program-card p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .program-card a {
+      color: #66173D;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .program-card a:hover {
+      text-decoration: underline;
+    }
+
+    .related-articles-section {
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .related-articles-section h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #66173D;
+    }
+
+    .article-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .article-card-v2 {
+      background-color: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(56, 14, 91, 0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .article-card-v2 img {
+      width: 100%;
       height: 180px;
       object-fit: cover;
       border-top-left-radius: 16px;
       border-top-right-radius: 16px;
-}
+    }
 
 
-.article-card-v2 h3 {
-  font-size: 1.1rem;
-  color: #A8437B;
-  margin-bottom: 0.8rem;
-}
+    .article-card-v2 h3 {
+      font-size: 1.1rem;
+      color: #A8437B;
+      margin-bottom: 0.8rem;
+    }
 
-.article-card-v2 p {
-  font-size: 0.95rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
+    .article-card-v2 p {
+      font-size: 0.95rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
 
-.article-card-v2 a {
-  font-weight: 600;
-  color: #B75196;
-  text-decoration: none;
-}
+    .article-card-v2 a {
+      font-weight: 600;
+      color: #B75196;
+      text-decoration: none;
+    }
 
-.article-card-v2 a:hover {
-  color: #66173D;
-  text-decoration: underline;
-}
-
-</style>
+    .article-card-v2 a:hover {
+      color: #66173D;
+      text-decoration: underline;
+    }
+  </style>
 
 </head>
+
 <body>
-<header class="header">
+  <header class="header">
     <div class="logo">
       <a href="index.php">
         <img src="images/logo.png" class="logo-icon" alt="Planado PH Logo">
@@ -182,66 +194,70 @@
   </header>
 
   <section class="banner_youth">
-  <div class="banner_youth-content">
-    <div class="banner_youth-text">
-      <h1>Empowering the Next Generation</h1>
-      <p>Providing age-appropriate, culturally sensitive education helps young people make safe and informed decisions about their sexual and reproductive health. This section also highlights community programs that support youth empowerment.</p>
+    <div class="banner_youth-content">
+      <div class="banner_youth-text">
+        <h1>Empowering the Next Generation</h1>
+        <p>Providing age-appropriate, culturally sensitive education helps young people make safe and informed decisions
+          about their sexual and reproductive health. This section also highlights community programs that support youth
+          empowerment.</p>
+      </div>
+      <div class="youth-banner-image">
+        <img src="images/youth-illustration.png" alt="Youth Education Banner">
+      </div>
     </div>
-    <div class="youth-banner-image">
-      <img src="images/youth-illustration.png" alt="Youth Education Banner">
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="youth-programs">
-  <h2>Featured Youth Programs</h2>
-  <div class="program-grid">
-    <div class="program-card">
-      <h3>DOH Adolescent Health Program</h3>
-      <p>Comprehensive services and guidance for adolescents by the Department of Health.</p>
-      <a href="https://caro.doh.gov.ph/adolescent-health-program/" target="_blank">Learn More</a>
+  <section class="youth-programs">
+    <h2>Featured Youth Programs</h2>
+    <div class="program-grid">
+      <div class="program-card">
+        <h3>DOH Adolescent Health Program</h3>
+        <p>Comprehensive services and guidance for adolescents by the Department of Health.</p>
+        <a href="https://caro.doh.gov.ph/adolescent-health-program/" target="_blank">Learn More</a>
+      </div>
+      <div class="program-card">
+        <h3>Y-PEER Philippines</h3>
+        <p>Peer-led education network empowering young people through sexual health awareness.</p>
+        <a href="https://www.facebook.com/ypeerpilipinas/" target="_blank">Learn More</a>
+      </div>
+      <div class="program-card">
+        <h3>FPOP Youth Arm</h3>
+        <p>Youth-led advocacy arm of the Family Planning Organization of the Philippines.</p>
+        <a href="https://fpop1969.org/about-fpop/our-work/" target="_blank">Learn More</a>
+      </div>
     </div>
-    <div class="program-card">
-      <h3>Y-PEER Philippines</h3>
-      <p>Peer-led education network empowering young people through sexual health awareness.</p>
-      <a href="https://www.facebook.com/ypeerpilipinas/" target="_blank">Learn More</a>
+  </section>
+  <section class="related-articles-section">
+    <h2>Related Articles</h2>
+    <div class="article-card-grid">
+      <div class="article-card-v2">
+        <img src="images/y1.png" alt="Article Icon">
+        <h3>Comprehensive Sexuality Education (CSE)</h3>
+        <p>Briefer from DepEd detailing CSE integration into the curriculum for youth development.</p>
+        <a href="https://www.deped.gov.ph/wp-content/uploads/Briefer_Comprehensive-Sexuality-Education-CSE_.pdf"
+          target="_blank">Read More</a>
+      </div>
+      <div class="article-card-v2">
+        <img src="images/y2.png" alt="Article Icon">
+        <h3>RH Education in a Filipino City</h3>
+        <p>A case study from ScienceDirect on implementing reproductive health education locally.</p>
+        <a href="https://www.sciencedirect.com/science/article/pii/S0738059323000548" target="_blank">Read More</a>
+      </div>
+      <div class="article-card-v2">
+        <img src="images/y3.png" alt="Article Icon">
+        <h3>DOH Adolescent Health Program</h3>
+        <p>Services and programs from the Department of Health promoting youth wellness.</p>
+        <a href="https://caro.doh.gov.ph/adolescent-health-program/" target="_blank">Read More</a>
+      </div>
+      <div class="article-card-v2">
+        <img src="images/y4.png" alt="Article Icon">
+        <h3>Improving Sexual Health Education</h3>
+        <p>Trust.ph initiative promoting safe practices and information in schools and communities.</p>
+        <a href="https://trust.ph/improving-sexual-health-education-efforts-to-spread-accurate-information-and-promote-safe-practices-in-schools-and-communities/"
+          target="_blank">Read More</a>
+      </div>
     </div>
-    <div class="program-card">
-      <h3>FPOP Youth Arm</h3>
-      <p>Youth-led advocacy arm of the Family Planning Organization of the Philippines.</p>
-      <a href="https://fpop1969.org/about-fpop/our-work/" target="_blank">Learn More</a>
-    </div>
-  </div>
-</section>
-<section class="related-articles-section">
-  <h2>Related Articles</h2>
-  <div class="article-card-grid">
-    <div class="article-card-v2">
-      <img src="images/y1.png" alt="Article Icon">
-      <h3>Comprehensive Sexuality Education (CSE)</h3>
-      <p>Briefer from DepEd detailing CSE integration into the curriculum for youth development.</p>
-      <a href="https://www.deped.gov.ph/wp-content/uploads/Briefer_Comprehensive-Sexuality-Education-CSE_.pdf" target="_blank">Read More</a>
-    </div>
-    <div class="article-card-v2">
-      <img src="images/y2.png" alt="Article Icon">
-      <h3>RH Education in a Filipino City</h3>
-      <p>A case study from ScienceDirect on implementing reproductive health education locally.</p>
-      <a href="https://www.sciencedirect.com/science/article/pii/S0738059323000548" target="_blank">Read More</a>
-    </div>
-    <div class="article-card-v2">
-      <img src="images/y3.png" alt="Article Icon">
-      <h3>DOH Adolescent Health Program</h3>
-      <p>Services and programs from the Department of Health promoting youth wellness.</p>
-      <a href="https://caro.doh.gov.ph/adolescent-health-program/" target="_blank">Read More</a>
-    </div>
-    <div class="article-card-v2">
-      <img src="images/y4.png" alt="Article Icon">
-      <h3>Improving Sexual Health Education</h3>
-      <p>Trust.ph initiative promoting safe practices and information in schools and communities.</p>
-      <a href="https://trust.ph/improving-sexual-health-education-efforts-to-spread-accurate-information-and-promote-safe-practices-in-schools-and-communities/" target="_blank">Read More</a>
-    </div>
-  </div>
-</section>
+  </section>
 
   <footer class="modern-footer">
     <div class="footer-main">
@@ -270,4 +286,5 @@
     </div>
   </footer>
 </body>
+
 </html>

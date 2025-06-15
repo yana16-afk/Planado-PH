@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // Check if user is logged in
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) {
     // Redirect to login page if not logged in
@@ -513,7 +512,7 @@ $user_initials = $_SESSION['user_initials'] ?? strtoupper(substr($user_name, 0, 
                     <li>Missed dose tracking</li>
                     <li>Progress monitoring</li>
                 </ul>
-                <a href="reminder.php" class="landing-tool-button">Manage Reminders</a>
+                <a href="Tracker/reminder.php" class="landing-tool-button">Manage Reminders</a>
             </div>
 
             <div class="landing-tool-card">
@@ -547,7 +546,7 @@ $user_initials = $_SESSION['user_initials'] ?? strtoupper(substr($user_name, 0, 
                 <h4>Tools</h4>
                 <ul>
                     <li><a href="Tracker/ovulation-tracker.php">Ovulation Tracker</a></li>
-                    <li><a href="reminder.php">Reminder</a></li>
+                    <li><a href="Tracker/reminder.php">Reminder</a></li>
                     <li><a href="Tracker/due-date-calculator.php">Due Date Calculator</a></li>
                 </ul>
             </div>

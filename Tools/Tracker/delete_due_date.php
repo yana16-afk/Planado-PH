@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once '../planado_db.php'; // Use consistent database connection file
+require_once '../planado_db.php'; 
 header('Content-Type: application/json');
 
-// Check if user is logged in
+
 if (!isset($_SESSION['user_id'])) {
     http_response_code(403);
     echo json_encode(['success' => false, 'error' => 'Not logged in']);
@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 try {
-    // Delete the due date for the current user
     $stmt = $pdo->prepare("DELETE FROM due_dates WHERE user_id = ?");
     $stmt->execute([$_SESSION['user_id']]);
     
