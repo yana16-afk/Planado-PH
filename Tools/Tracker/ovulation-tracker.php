@@ -260,6 +260,125 @@ if (!isset($_SESSION['user_id'])) {
         border-radius: 50%;
         background: #9e1b45;
     }
+    .date.reminder {
+    position: relative;
+    border: 3px solid #FF6B35 !important;
+    background: linear-gradient(135deg, #FFE5CC, #FFF0E6) !important;
+    color: #D84315 !important;
+    font-weight: 700 !important;
+    }
+
+    .date.reminder::before {
+        content: '💊';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        font-size: 10px;
+        background: #FF6B35;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .reminder-toggle {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: linear-gradient(135deg, #FF6B35, #E64A19);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 15px 20px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        font-family: 'Poppins', sans-serif;
+        display: none;
+    }
+
+    .reminder-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+    }
+
+    .reminder-toggle.show {
+        display: block;
+    }
+
+    .reminder-popup {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        z-index: 1001;
+        min-width: 300px;
+        max-width: 350px;
+        display: none;
+        animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .reminder-popup h3 {
+        margin: 0 0 15px 0;
+        color: #FF6B35;
+        font-family: 'Fredoka', sans-serif;
+        font-size: 1.3rem;
+    }
+
+    .reminder-item {
+        background: #FFF0E6;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-left: 4px solid #FF6B35;
+    }
+
+    .reminder-date {
+        font-weight: 600;
+        color: #D84315;
+        font-size: 0.9rem;
+    }
+
+    .reminder-method {
+        color: #666;
+        font-size: 0.8rem;
+        margin-top: 5px;
+    }
+
+    .close-popup {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: #999;
+        cursor: pointer;
+    }
+
+    .no-reminders {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        padding: 20px;
+    }
     </style>
 </head>
 <body>
@@ -314,27 +433,133 @@ if (!isset($_SESSION['user_id'])) {
             <span class="current-year" id="current-year"></span>
             <button class="year-nav-btn" id="next-year-btn" onclick="changeYear(1)"> > </button>
         </div>
+        <button class="reminder-toggle" id="reminderToggle" onclick="toggleReminderPopup()">
+    💊 Reminders
+        </button>
+
+        <div class="reminder-popup" id="reminderPopup">
+            <button class="close-popup" onclick="closeReminderPopup()">&times;</button>
+            <h3>📅 Upcoming Reminders</h3>
+            <div id="reminderList">
+                <!-- Reminders will be populated here -->
+            </div>
+        </div>
     </main>
 
     <script>
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     let cycleData = null;
+    let reminderData = []; 
     let currentDisplayYear = new Date().getFullYear();
-    
+
     async function fetchCycleData() {
         try {
             const response = await fetch('fetch_cycle_data.php');
             if (response.ok) {
                 cycleData = await response.json();
+                reminderData = cycleData.reminders || [];
                 updateCycleInfo();
+                updateReminderButton();
                 checkYearNavigation();
             } else {
                 cycleData = null;
+                reminderData = [];
             }
         } catch (error) {
             console.error('Error fetching cycle data:', error);
             cycleData = null;
+            reminderData = [];
         }
+    }
+    function updateReminderButton() {
+        const reminderToggle = document.getElementById('reminderToggle');
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const nextReminder = reminderData
+            .filter(reminder => {
+                const reminderDate = new Date(reminder.reminder_date);
+                reminderDate.setHours(0, 0, 0, 0);
+                return reminderDate >= today && !reminder.is_completed;
+            })
+            .sort((a, b) => new Date(a.reminder_date) - new Date(b.reminder_date))[0];
+        
+        if (nextReminder) {
+            reminderToggle.classList.add('show');
+            reminderToggle.innerHTML = `💊 Reminders (1)`;
+        } else {
+            reminderToggle.classList.remove('show');
+        }
+    }
+
+    function toggleReminderPopup() {
+        const popup = document.getElementById('reminderPopup');
+        const reminderList = document.getElementById('reminderList');
+        
+        if (popup.style.display === 'none' || popup.style.display === '') {
+            populateReminderList();
+            popup.style.display = 'block';
+        } else {
+            popup.style.display = 'none';
+        }
+    }
+    function closeReminderPopup() {
+        document.getElementById('reminderPopup').style.display = 'none';
+    }
+
+    function populateReminderList() {
+        const reminderList = document.getElementById('reminderList');
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const nextReminder = reminderData
+            .filter(reminder => {
+                const reminderDate = new Date(reminder.reminder_date);
+                reminderDate.setHours(0, 0, 0, 0);
+                return reminderDate >= today && !reminder.is_completed;
+            })
+            .sort((a, b) => new Date(a.reminder_date) - new Date(b.reminder_date))[0];
+        
+        if (!nextReminder) {
+            reminderList.innerHTML = '<div class="no-reminders">No upcoming reminders</div>';
+            return;
+        }
+        
+        const methodNames = {
+            '1': 'Daily Birth Control Pill',
+            '7': 'Weekly Contraceptive Patch',
+            '21': 'Birth Control Ring',
+            '90': 'Depo-Provera Shot',
+            '30': 'Monthly Reminder'
+        };
+        
+        const reminderDate = new Date(nextReminder.reminder_date);
+        const isToday = reminderDate.toDateString() === today.toDateString();
+        const daysFromNow = Math.ceil((reminderDate - today) / (1000 * 60 * 60 * 24));
+        
+        let dateText = reminderDate.toLocaleDateString('en-US', { 
+            weekday: 'short', 
+            month: 'short', 
+            day: 'numeric' 
+        });
+        
+        if (isToday) {
+            dateText += ' (Today)';
+        } else if (daysFromNow === 1) {
+            dateText += ' (Tomorrow)';
+        } else if (daysFromNow > 1) {
+            dateText += ` (in ${daysFromNow} days)`;
+        }
+        
+        reminderList.innerHTML = `
+            <div class="reminder-item">
+                <div class="reminder-date">${dateText}</div>
+                <div class="reminder-method">
+                    ${methodNames[nextReminder.method_type] || 'Contraceptive Method'}
+                    ${nextReminder.reminder_time ? `at ${nextReminder.reminder_time}` : ''}
+                </div>
+            </div>
+        `;
     }
 
     function checkYearNavigation() {
@@ -346,7 +571,6 @@ if (!isset($_SESSION['user_id'])) {
             return;
         }
         
-        // Check if next period extends to next year
         const nextPeriodYear = new Date(cycleData.menstruation_start).getFullYear();
         const currentYear = new Date().getFullYear();
         
@@ -356,7 +580,6 @@ if (!isset($_SESSION['user_id'])) {
         
         currentYearSpan.textContent = currentDisplayYear;
         
-        // Update button states
         const prevBtn = document.getElementById('prev-year-btn');
         const nextBtn = document.getElementById('next-year-btn');
         
@@ -377,16 +600,13 @@ if (!isset($_SESSION['user_id'])) {
         const cycleInfoDiv = document.getElementById('cycle-info');
         const cycleStatsDiv = document.getElementById('cycle-stats');
         
-        // Calculate days since last period
         const lastPeriod = new Date(cycleData.last_menstruation_date);
         const today = new Date();
         const daysSinceLastPeriod = Math.floor((today - lastPeriod) / (1000 * 60 * 60 * 24));
-        
-        // Calculate days until next period
+
         const nextPeriod = cycleData.menstruation_start ? new Date(cycleData.menstruation_start) : null;
         const daysUntilNextPeriod = nextPeriod ? Math.floor((nextPeriod - today) / (1000 * 60 * 60 * 24)) : null;
         
-        // Calculate days until ovulation
         const ovulationStart = cycleData.ovulation_start ? new Date(cycleData.ovulation_start) : null;
         const daysUntilOvulation = ovulationStart ? Math.floor((ovulationStart - today) / (1000 * 60 * 60 * 24)) : null;
         
@@ -450,13 +670,13 @@ if (!isset($_SESSION['user_id'])) {
             dayHeader.textContent = day;
             miniCal.appendChild(dayHeader);
         });
+
         
         const firstDay = new Date(year, month - 1, 1).getDay();
         const daysInMonth = new Date(year, month, 0).getDate();
         const prevMonthDays = new Date(year, month - 1, 0).getDate();
         const today = new Date().toISOString().split('T')[0];
 
-        // Previous month inactive days
         for(let i = firstDay - 1; i >= 0; i--) {
             const inactiveBox = document.createElement('div');
             inactiveBox.className = 'date inactive';
@@ -464,31 +684,42 @@ if (!isset($_SESSION['user_id'])) {
             miniCal.appendChild(inactiveBox);
         }
 
-        // Current month days
         for(let day = 1; day <= daysInMonth; day++) {
             const dateStr = `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
             const dateBox = document.createElement('div');
             dateBox.className = 'date';
             dateBox.textContent = day;
 
-            // Mark today
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            const nextReminder = reminderData
+                .filter(reminder => {
+                    const reminderDate = new Date(reminder.reminder_date);
+                    reminderDate.setHours(0, 0, 0, 0);
+                    return reminderDate >= today && !reminder.is_completed;
+                })
+                .sort((a, b) => new Date(a.reminder_date) - new Date(b.reminder_date))[0];
+
+            const hasReminder = nextReminder && nextReminder.reminder_date === dateStr;
+
+            if (hasReminder) {
+                dateBox.classList.add('reminder');
+            }
             if (dateStr === today) {
                 dateBox.classList.add('today');
             }
 
             if (cycleData) {
-                // Last menstruation date
                 if (dateStr === cycleData.last_menstruation_date) {
                     dateBox.classList.add('pink');
                 }
-                // Fertile window
                 else if (
                     cycleData.fertile_window_start && cycleData.fertile_window_end &&
                     dateStr >= cycleData.fertile_window_start && dateStr <= cycleData.fertile_window_end
                 ) {
                     dateBox.classList.add('green');
                 }
-                // Ovulation period (priority over fertile window for display)
                 if (
                     cycleData.ovulation_start && cycleData.ovulation_end &&
                     dateStr >= cycleData.ovulation_start && dateStr <= cycleData.ovulation_end
@@ -496,7 +727,6 @@ if (!isset($_SESSION['user_id'])) {
                     dateBox.classList.remove('green'); // Remove fertile window class
                     dateBox.classList.add('blue');
                 }
-                // Next menstruation period
                 else if (
                     cycleData.menstruation_start && cycleData.menstruation_end &&
                     dateStr >= cycleData.menstruation_start && dateStr <= cycleData.menstruation_end
@@ -511,8 +741,6 @@ if (!isset($_SESSION['user_id'])) {
 
             miniCal.appendChild(dateBox);
         }
-
-        // Next month inactive days
         const totalCells = 42;
         const cellsFilled = firstDay + daysInMonth;
         for(let i = 1; i <= totalCells - cellsFilled; i++) {
@@ -563,6 +791,15 @@ if (!isset($_SESSION['user_id'])) {
     document.addEventListener('DOMContentLoaded', async () => {
         await fetchCycleData();
         renderAllMonths();
+    });
+
+    document.addEventListener('click', function(event) {
+        const popup = document.getElementById('reminderPopup');
+        const toggle = document.getElementById('reminderToggle');
+        
+        if (!popup.contains(event.target) && !toggle.contains(event.target)) {
+            popup.style.display = 'none';
+        }
     });
     </script>
 </body>

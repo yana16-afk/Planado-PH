@@ -19,19 +19,16 @@ if (!$dueDate) {
 }
 
 try {
-    // Check if a due date already exists for the user
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM due_dates WHERE user_id = ?");
     $stmt->execute([$userId]);
     $exists = $stmt->fetchColumn() > 0;
 
     if ($exists) {
-        // Update the existing due date
         $stmt = $pdo->prepare("UPDATE due_dates 
                                SET due_date = ?, created_at = CURRENT_TIMESTAMP 
                                WHERE user_id = ?");
         $stmt->execute([$dueDate, $userId]);
     } else {
-        // Insert a new due date
         $stmt = $pdo->prepare("INSERT INTO due_dates (user_id, due_date) VALUES (?, ?)");
         $stmt->execute([$userId, $dueDate]);
     }
