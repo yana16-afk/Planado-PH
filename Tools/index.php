@@ -105,8 +105,8 @@ if (isset($_SESSION['success'])) {
                         <img src="images/syringe.png" alt="Syringe and Vial">
                     </div>
                     <div class="card-content">
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
-                        <a href="article1.php" class="read-more">Read More</a>
+                        <p>Explore comprehensive information about safe and effective birth control options. From hormonal methods to barrier methods and permanent solutions, discover the right contraceptive choice for your health needs.</p>
+                        <a href="contraceptives.php" class="read-more">Read More</a>
                     </div>
                 </div>
                 <div class="featured-card">
@@ -114,8 +114,8 @@ if (isset($_SESSION['success'])) {
                         <img src="images/pregnancytest.png" alt="Pregnancy Test">
                     </div>
                     <div class="card-content">
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
-                        <a href="article2.php" class="read-more">Read More</a>
+                        <p>Start your pregnancy journey right. Learn preconception preparation, recognize early pregnancy signs, and understand what happens during each trimester with our comprehensive guide.</p>
+                        <a href="pregnancy.php" class="read-more">Read More</a>
                     </div>
                 </div>
                 <div class="featured-card">
@@ -123,8 +123,8 @@ if (isset($_SESSION['success'])) {
                         <img src="images/reproductive.png" alt="Reproductive System">
                     </div>
                     <div class="card-content">
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus.</p>
-                        <a href="article3.php" class="read-more">Read More</a>
+                        <p>Understand your reproductive system and fertility cycles. Learn about ovulation tracking, menstrual health, and how to make informed decisions about family planning and reproductive wellness.</p>
+                        <a href="reproductive.php" class="read-more">Read More</a>
                     </div>
                 </div>
             </div>
@@ -137,25 +137,43 @@ if (isset($_SESSION['success'])) {
                     <div class="tool-icon">
                         <img src="images/calendar.png" alt="Calendar Icon">
                     </div>
-                    <a href="Tracker/ovulation-tracker.php" class="tool-button">
-                        Ovulation Tracker
-                    </a>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="Tracker/ovulation-tracker.php" class="tool-button">
+                            Ovulation Tracker
+                        </a>
+                    <?php else: ?>
+                        <a href="login.php?redirect=Tracker/ovulation-tracker.php" class="tool-button">
+                            Ovulation Tracker
+                        </a>
+                    <?php endif; ?>
                 </div>
                 <div class="tool-card">
                     <div class="tool-icon">
                         <img src="images/pills.png" alt="Pills Icon">
                     </div>
-                    <a href="Tracker/reminder.php" class="tool-button">
-                        Reminder
-                    </a>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="Tracker/reminder.php" class="tool-button">
+                            Reminder
+                        </a>
+                    <?php else: ?>
+                        <a href="login.php?redirect=Tracker/reminder.php" class="tool-button">
+                            Reminder
+                        </a>
+                    <?php endif; ?>
                 </div>
                 <div class="tool-card">
                     <div class="tool-icon">
                         <img src="images/baby.png" alt="Baby Icon">
                     </div>
-                    <a href="Tracker/due-date-calculator.php" class="tool-button">
-                        Due Date Calculator
-                    </a>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="Tracker/due-date-calculator.php" class="tool-button">
+                            Due Date Calculator
+                        </a>
+                    <?php else: ?>
+                        <a href="login.php?redirect=Tracker/due-date-calculator.php" class="tool-button">
+                            Due Date Calculator
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </section>
@@ -173,9 +191,27 @@ if (isset($_SESSION['success'])) {
     <div class="footer-column">
       <h4>Tools</h4>
       <ul>
-        <li><a href="Tracker/ovulation-tracker.php">Ovulation Tracker</a></li>
-        <li><a href="Tracker/reminder.php">Reminder</a></li>
-        <li><a href="Tracker/due-date-calculator.php">Due Date Calculator</a></li>
+        <li>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="Tracker/ovulation-tracker.php">Ovulation Tracker</a>
+          <?php else: ?>
+            <a href="login.php?redirect=Tracker/ovulation-tracker.php">Ovulation Tracker</a>
+          <?php endif; ?>
+        </li>
+        <li>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="Tracker/reminder.php">Reminder</a>
+          <?php else: ?>
+            <a href="login.php?redirect=Tracker/reminder.php">Reminder</a>
+          <?php endif; ?>
+        </li>
+        <li>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="Tracker/due-date-calculator.php">Due Date Calculator</a>
+          <?php else: ?>
+            <a href="login.php?redirect=Tracker/due-date-calculator.php">Due Date Calculator</a>
+          <?php endif; ?>
+        </li>
       </ul>
     </div>
 

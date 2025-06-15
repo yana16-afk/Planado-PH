@@ -125,9 +125,27 @@ session_start();
     <div class="footer-column">
       <h4>Tools</h4>
       <ul>
-        <li><a href="tools.php">Ovulation Tracker</a></li>
-        <li><a href="reminder.php">Reminder</a></li>
-        <li><a href="due-date-calculator.php">Due Date Calculator</a></li>
+        <li>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="Tracker/ovulation-tracker.php">Ovulation Tracker</a>
+          <?php else: ?>
+            <a href="login.php?redirect=Tracker/ovulation-tracker.php">Ovulation Tracker</a>
+          <?php endif; ?>
+        </li>
+        <li>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="Tracker/reminder.php">Reminder</a>
+          <?php else: ?>
+            <a href="login.php?redirect=Tracker/reminder.php">Reminder</a>
+          <?php endif; ?>
+        </li>
+        <li>
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="Tracker/due-date-calculator.php">Due Date Calculator</a>
+          <?php else: ?>
+            <a href="login.php?redirect=Tracker/due-date-calculator.php">Due Date Calculator</a>
+          <?php endif; ?>
+        </li>
       </ul>
     </div>
 
