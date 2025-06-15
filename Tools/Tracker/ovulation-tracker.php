@@ -1,7 +1,9 @@
-
-
 <?php
 session_start();
+
+require_once '../auth_check.php';
+require_once '../planado_db.php';
+
 $user_name = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null;
 $initials = $user_name ? strtoupper(substr($user_name, 0, 2)) : null;
 ?>
