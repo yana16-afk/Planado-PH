@@ -125,7 +125,6 @@ if (!empty($_FILES['profile_picture']['name'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -586,7 +585,8 @@ select::placeholder {
     </script>
 <?php endif; ?>
 
-    <form id="registerForm" method="POST" action="register.php" enctype="multipart/form-data" novalidate>
+    <form id="registerForm" method="POST" action="register.php" enctype="multipart/form-data">
+  
 <div class="form-group profile-upload">
     <label for="profile_picture" class="profile-label">
         <div class="profile-preview" id="preview-container">
@@ -811,6 +811,7 @@ window.onload = function () {
         if (el) el.textContent = '';
     });
 };
+
 
 
 
