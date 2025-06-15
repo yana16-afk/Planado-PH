@@ -117,6 +117,70 @@
     .visible {
       display: block;
     }
+
+    .related-articles-section {
+  padding: 4rem;
+}
+
+.related-articles-section h2 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 3rem;
+  color: #66173D;
+  margin-bottom: 1rem;
+}
+
+.article-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 2rem;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color:rgba(162, 113, 177, 0.34) transparent;
+}
+
+.article-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.article-scroll-container::-webkit-scrollbar-thumb {
+    scrollbar-color:rgba(162, 113, 177, 0.34) transparent;
+    border-radius: 4px;
+}
+
+.article-card {
+  flex: 0 0 280px;
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+}
+
+.article-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+.article-card a {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #B75196;
+  text-decoration: none;
+  display: block;
+}
+
+.article-card a:hover {
+  text-decoration: underline;
+  color: #66173D;
+}
+
   </style>
 </head>
 
@@ -130,7 +194,6 @@
     </div>
     <nav class="nav">
       <a href="index.php">Home</a>
-      <a href="contraceptives.php">Contraceptives</a>
       <a href="tools.php">Tools</a>
       <a href="resources.php">Resources</a>
       <a href="about.php">About</a>
@@ -186,6 +249,36 @@
       ?>
     </div>
   </section>
+
+  <section class="related-articles-section">
+  <h2>Related Articles</h2>
+  <div class="article-scroll-container">
+    <div class="article-card">
+      <img src="images/article-icon1.png" alt="Article Icon">
+      <a href="https://www.doctoranywhere.ph/post/family-planning" target="_blank">Healthcare for Her: Understanding Family Planning Methods</a>
+    </div>
+    <div class="article-card">
+      <img src="images/article-icon2.png" alt="Article Icon">
+      <a href="https://trust.ph/" target="_blank">Modern Methods Of Contraception</a>
+    </div>
+    <div class="article-card">
+      <img src="images/article-icon3.png" alt="Article Icon">
+      <a href="https://www.who.int/news-room/fact-sheets/detail/family-planning-contraception" target="_blank">Family Planning / Contraception Methods</a>
+    </div>
+    <div class="article-card">
+      <img src="images/article-icon4.png" alt="Article Icon">
+      <a href="https://upd.edu.ph/1-in-3-pinays-use-traditional-over-modern-contraceptives/" target="_blank">1 in 3 Pinays use traditional over modern contraceptives - UP Diliman</a>
+    </div>
+    <div class="article-card">
+      <img src="images/article-icon5.png" alt="Article Icon">
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6657820/" target="_blank">Barriers to Contraception in the Philippines - PMC</a>
+    </div>
+    <div class="article-card">
+      <img src="images/article-icon6.png" alt="Article Icon">
+      <a href="Guide on Birth Control Methods in the Philippines | Kindred" target="_blank">Guide on Birth Control Methods in PH | Kindred</a>
+    </div>
+  </div>
+</section>
 
   <footer class="modern-footer">
     <div class="footer-main">

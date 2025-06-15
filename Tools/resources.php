@@ -10,13 +10,12 @@
 <body>
     <header class="header">
         <div class="logo">
-          <a href="resources.php">
+          <a href="index.php">
             <img src="images/logo.png" class="logo-icon" alt="Planado PH Logo">
           </a>
         </div>
         <nav class="nav">
             <a href="index.php">Home</a>
-            <a href="contraceptives.php">Contraceptives</a>
             <a href="tools.php">Tools</a>
             <a href="resources.php">Resources</a>
             <a href="about.php">About</a>
@@ -37,7 +36,7 @@
         <div class="article-content">
           <h3>Contraception & Birth Control</h3>
           <p>Learn about the various contraceptive methods available, how they work, and which options might be best for you. This section aims to dispel myths and provide clear facts to help you take control of your reproductive health.</p>
-          <a href="#" class="read-more">Read More</a>
+          <a href="contraceptives.php" class="read-more">Read More</a>
         </div>
       </div>
 
@@ -48,17 +47,17 @@
         <div class="article-content">
           <h3>Pregnancy & Preconception</h3>
           <p>Discover important steps to prepare your body and mind for a healthy pregnancy, including nutrition and medical care. Understand the early signs of pregnancy and what to expect during each trimester.</p>
-          <a href="#" class="read-more">Read More</a>
+          <a href="Preg_article.html" class="read-more">Read More</a>
         </div>
       </div>
 
       <div class="article-card">
         <div class="article-image">
-          <img src="images/Family.png" alt="Family Planning & Reproductive Health">
+          <img src="images/Family.png" alt="Family Planning">
         </div>
         <div class="article-content">
-          <h3>Family Planning & Reproductive Health</h3>
-          <p>Family planning empowers individuals and couples to decide freely and responsibly about having children. This section covers reproductive health basics, fertility awareness, and the benefits of planned parenthood.</p>
+          <h3>Family Planning</h3>
+          <p>Family planning empowers individuals and couples to decide freely and responsibly about having children. This section covers fertility awareness and benefits of planned parenthood.</p>
           <a href="#" class="read-more">Read More</a>
         </div>
       </div>
@@ -73,6 +72,17 @@
           <a href="#" class="read-more">Read More</a>
         </div>
       </div>
+
+    <div class="article-card">
+      <div class="article-image">
+        <img src="images/Family.png" alt="Reproductive Health">
+      </div>
+      <div class="article-content">
+        <h3>Reproductive Health</h3>
+        <p>Explore the essentials of reproductive health, including how your body works, fertility tracking, and the importance of informed and intentional parenthood choices for a healthier future.</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+    </div>
 
       <div class="article-card">
         <div class="article-image">

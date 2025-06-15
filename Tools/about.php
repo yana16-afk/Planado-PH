@@ -13,13 +13,12 @@ session_start();
 <body>
     <header class="header">
         <div class="logo">
-          <a href="about.php">
+          <a href="index.php">
             <img src="images/logo.png" class="logo-icon" alt="Planado PH Logo">
           </a>
         </div>
         <nav class="nav">
             <a href="index.php">Home</a>
-            <a href="contraceptives.php">Contraceptives</a>
             <a href="tools.php">Tools</a>
             <a href="resources.php">Resources</a>
             <a href="about.php">About</a>
