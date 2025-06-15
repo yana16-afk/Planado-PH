@@ -590,7 +590,7 @@ select::placeholder {
 <div class="form-group profile-upload">
     <label for="profile_picture" class="profile-label">
         <div class="profile-preview" id="preview-container">
-            <img id="preview-image" src="images/default-pfp.png" alt="Preview">
+            <img id="preview-image" src="images/default-pfp.png" >
         </div>
         <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
         <span class="upload-text">Click to upload your profile picture ✨ (optional) </span>
