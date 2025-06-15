@@ -470,7 +470,7 @@ $user_initials = $_SESSION['user_initials'] ?? strtoupper(substr($user_name, 0, 
                 </div>
                 <div class="dropdown-arrow">▼</div>
                 <div class="user-dropdown">
-                    <a href="profile.php">My Profile</a>
+                    <a href="user-profile.php">My Profile</a>
                     <a href="logout.php">Sign Out</a>
                 </div>
             </div>
