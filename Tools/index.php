@@ -17,13 +17,21 @@ session_start();
             <img src="images/logo.png" class="logo-icon" alt="Planado PH Logo">
           </a>
         </div>
+
         <nav class="nav">
-            <a href="index.php">Home</a>
-            <a href="tools.php">Tools</a>
-            <a href="resources.php">Resources</a>
-            <a href="about.php">About</a>
-            <a href="login.php" class="sign-in-btn">Sign In</a>
-        </nav>
+  <a href="index.php">Home</a>
+  <a href="tools.php">Tools</a>
+  <a href="resources.php">Resources</a>
+  <a href="about.php">About</a>
+
+  <?php if (isset($_SESSION['user_id'])): ?>
+    <a href="user-profile.php"><?= htmlspecialchars($_SESSION['user_name']) ?></a>
+    <a href="logout.php" class="sign-out-btn">Sign Out</a>
+  <?php else: ?>
+    <a href="login.php" class="sign-in-btn">Sign In</a>
+  <?php endif; ?>
+</nav>
+
     </header>
 
     <main class="main-content">
