@@ -876,6 +876,147 @@ body {
       padding: 2rem;
   }
 }
+/* ================================
+   LOGGED-IN NAVBAR ENHANCEMENT
+==================================*/
+.user-profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.user-profile:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #66173D;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.user-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.dropdown-arrow {
+  font-size: 0.8rem;
+  color: white;
+  transition: transform 0.3s;
+}
+
+.user-profile:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  min-width: 150px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.user-profile:hover .user-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.user-dropdown a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.user-dropdown a:hover {
+  background: #f3e0f5;
+}
+
+.user-dropdown a:last-child {
+  color: #a50b36;
+  font-weight: 600;
+}
+.success-popup {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e6fff2;
+    color: #228c6e;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    animation: fadeInPop 0.3s ease-out;
+}
+@keyframes fadeInPop {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+#welcome-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 245, 250, 0.95);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.welcome-card {
+    background: #ffe0ef;
+    padding: 40px 60px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(216, 164, 194, 0.4);
+    text-align: center;
+    color: #c35c94;
+    font-family: 'Fredoka', sans-serif;
+    animation: popIn 0.6s ease;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
 /* ========================================
    FOOTER STYLES
