@@ -86,9 +86,10 @@ $profile_name = '';
 if (!empty($_FILES['profile_picture']['name'])) {
     $profile_name = basename($_FILES['profile_picture']['name']);
     $target_dir = "pfp-user/";
+    $imageFileType = strtolower(pathinfo($_FILES["profile_picture"]["name"], PATHINFO_EXTENSION));
     $unique_name = uniqid('pfp_', true) . '.' . $imageFileType;
     $target_file = $target_dir . $unique_name;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
 
     $allowed = ['jpg', 'jpeg', 'png', 'gif'];
     if (!in_array($imageFileType, $allowed)) {
