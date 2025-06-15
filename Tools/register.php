@@ -21,11 +21,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sex = $_POST['sex'] ?? '';
     $errors = [];
     // Validate Name
-    if (empty($name)) {
-        $errors['name'] = "Please enter your full name.";
-    } elseif (strlen($name) < 3) {
-        $errors['name'] = "Name should be at least 3 characters.";
+$profile_name = 'profilepic1.png'; // set default fallback
+
+if (!empty($_FILES['profile_picture']['name'])) {
+    $profile_name = basename($_FILES['profile_picture']['name']);
+    $target_dir = "pfp-user/";
+    $imageFileType = strtolower(pathinfo($_FILES["profile_picture"]["name"], PATHINFO_EXTENSION));
+    $unique_name = uniqid('pfp_', true) . '.' . $imageFileType;
+    $target_file = $target_dir . $unique_name;
+
+    $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+    if (!in_array($imageFileType, $allowed)) {
+        $errors['profile_picture'] = "Only JPG, PNG, and GIF files are allowed.";
+    } else {
+        if (!is_dir($target_dir)) {
+            mkdir($target_dir, 0777, true);
+        }
+        move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file);
+        $profile_name = $unique_name; // update with actual uploaded file name
     }
+}
 
     // Validate Email
     if (empty($email)) {
