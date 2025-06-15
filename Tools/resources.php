@@ -69,7 +69,7 @@
         <div class="article-content">
           <h3>Youth & Community Education</h3>
           <p>Providing age-appropriate, culturally sensitive education helps young people make safe and informed decisions about their sexual and reproductive health. This section also highlights community programs that support youth empowerment.</p>
-          <a href="#" class="read-more">Read More</a>
+          <a href="youth.php" class="read-more">Read More</a>
         </div>
       </div>
 
