@@ -94,7 +94,7 @@ session_start();
                     <div class="tool-icon">
                         <img src="images/calendar.png" alt="Calendar Icon">
                     </div>
-                    <a href="ovulation-tracker.php" class="tool-button">
+                    <a href="Tracker/ovulation-tracker.php" class="tool-button">
                         Ovulation Tracker
                     </a>
                 </div>
@@ -110,7 +110,7 @@ session_start();
                     <div class="tool-icon">
                         <img src="images/baby.png" alt="Baby Icon">
                     </div>
-                    <a href="due-date-calculator.php" class="tool-button">
+                    <a href="Tracker/due-date-calculator.php" class="tool-button">
                         Due Date Calculator
                     </a>
                 </div>
@@ -130,9 +130,9 @@ session_start();
     <div class="footer-column">
       <h4>Tools</h4>
       <ul>
-        <li><a href="tools.php">Ovulation Tracker</a></li>
+        <li><a href="Tracker/ovulation-tracker.php">Ovulation Tracker</a></li>
         <li><a href="reminder.php">Reminder</a></li>
-        <li><a href="due-date-calculator.php">Due Date Calculator</a></li>
+        <li><a href="Tracker/due-date-calculator.php">Due Date Calculator</a></li>
       </ul>
     </div>
 

@@ -58,7 +58,7 @@
         <div class="article-content">
           <h3>Family Planning</h3>
           <p>Family planning empowers individuals and couples to decide freely and responsibly about having children. This section covers fertility awareness and benefits of planned parenthood.</p>
-          <a href="#" class="read-more">Read More</a>
+          <a href="family.php" class="read-more">Read More</a>
         </div>
       </div>
 

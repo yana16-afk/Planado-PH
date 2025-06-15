@@ -497,7 +497,7 @@ $user_initials = $_SESSION['user_initials'] ?? strtoupper(substr($user_name, 0, 
                     <li>Cycle history tracking</li>
                     <li>Fertility window insights</li>
                 </ul>
-                <a href="ovulation-tracker.php" class="landing-tool-button">Continue Tracking</a>
+                <a href="Tracker/ovulation-tracker.php" class="landing-tool-button">Continue Tracking</a>
             </div>
 
             <div class="landing-tool-card">
@@ -529,7 +529,7 @@ $user_initials = $_SESSION['user_initials'] ?? strtoupper(substr($user_name, 0, 
                     <li>Milestone tracking</li>
                     <li>Development insights</li>
                 </ul>
-                <a href="due-date-calculator.php" class="landing-tool-button">View Calculator</a>
+                <a href="Tracker/due-date-calculator.php" class="landing-tool-button">View Calculator</a>
             </div>
         </div>
     </main>
@@ -546,9 +546,9 @@ $user_initials = $_SESSION['user_initials'] ?? strtoupper(substr($user_name, 0, 
             <div class="footer-column">
                 <h4>Tools</h4>
                 <ul>
-                    <li><a href="ovulation-tracker.php">Ovulation Tracker</a></li>
+                    <li><a href="Tracker/ovulation-tracker.php">Ovulation Tracker</a></li>
                     <li><a href="reminder.php">Reminder</a></li>
-                    <li><a href="due-date-calculator.php">Due Date Calculator</a></li>
+                    <li><a href="Tracker/due-date-calculator.php">Due Date Calculator</a></li>
                 </ul>
             </div>
 
