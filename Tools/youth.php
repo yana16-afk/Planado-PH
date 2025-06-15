@@ -11,18 +11,46 @@
     href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
   <style>
-    .banner_youth {
-      border-radius: 20px;
-      margin: 2rem auto;
-      padding: 4rem;
-      background-image: url('images/banner_contra.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      box-shadow: 0 4px 20px rgba(56, 14, 91, 0.09);
-      width: 100%;
-      max-width: 1400px;
-    }
+.banner_youth {
+  border-radius: 20px;
+  margin: 2rem auto;
+  padding: 4rem;
+  background-image: url('images/banner_contra.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 20px rgba(56, 14, 91, 0.09);
+  width: 100%;
+  max-width: 1600px;
+}
+
+.banner_youth-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.banner_youth-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.banner_youth-text h1 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 3.5rem;
+  color: #66173D;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.banner_youth-text p {
+  font-size: 1.3rem;
+  color: #B75196;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
 
     .youth-banner-image {
       width: 400px;

@@ -18,12 +18,29 @@ session_start();
           </a>
         </div>
         <nav class="nav">
-            <a href="index.php">Home</a>
-            <a href="tools.php">Tools</a>
-            <a href="resources.php">Resources</a>
-            <a href="about.php">About</a>
-            <a href="login.php" class="sign-in-btn">Sign In</a>
-        </nav>
+  <a href="index.php">Home</a>
+  <a href="tools.php">Tools</a>
+  <a href="resources.php">Resources</a>
+  <a href="about.php">About</a>
+
+  <?php if (isset($_SESSION['user_id'])): 
+    $user_name = $_SESSION['user_name'];
+    $initials = strtoupper(substr($user_name, 0, 2));
+  ?>
+    <div class="user-profile">
+      <div class="user-avatar"><?= htmlspecialchars($initials) ?></div>
+      <div class="user-name"><?= htmlspecialchars($user_name) ?></div>
+      <div class="dropdown-arrow">▼</div>
+      <div class="user-dropdown">
+        <a href="user-profile.php">My Profile</a>
+        <a href="logout.php">Sign Out</a>
+      </div>
+    </div>
+  <?php else: ?>
+    <a href="login.php" class="sign-in-btn">Sign In</a>
+  <?php endif; ?>
+</nav>
+
     </header>
 
     <main class="main-content">

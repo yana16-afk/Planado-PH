@@ -1,5 +1,19 @@
 <?php
 session_start();
+$successMessage = '';
+$showWelcome = isset($_GET['welcome']) && $_GET['welcome'] === 'true';
+require_once 'planado_db.php';
+// Check if the user has just registered and is being redirected to the dashboard
+if (isset($_SESSION['user_id']) && isset($_GET['welcome']) && $_GET['welcome'] === 'true') {
+    $showWelcome = true;
+    unset($_SESSION['user_id']); // Clear the session variable to avoid showing welcome again
+} else {
+    $showWelcome = false;
+}
+if (isset($_SESSION['success'])) {
+    $successMessage = $_SESSION['success'];
+    unset($_SESSION['success']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +25,24 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <?php if ($showWelcome): ?>
+<div id="welcome-overlay">
+    <div class="welcome-card">
+        <h1>🎉 Welcome to Planado PH!</h1>
+        <p>We're excited to have you on board! Redirecting to your dashboard...</p>
+    </div>
+</div>
+<script>
+    setTimeout(() => {
+        document.getElementById("welcome-overlay").style.display = "none";
+    }, 4000);
+</script>
+<?php endif; ?>
+
+    <?php if (!empty($successMessage)) : ?>
+    <div class="success-popup"><?= htmlspecialchars($successMessage) ?></div>
+<?php endif; ?>
+
     <header class="header">
         <div class="logo">
           <a href="index.php">
@@ -18,19 +50,30 @@ session_start();
           </a>
         </div>
 
-        <nav class="nav">
+<nav class="nav">
   <a href="index.php">Home</a>
   <a href="tools.php">Tools</a>
   <a href="resources.php">Resources</a>
   <a href="about.php">About</a>
 
-  <?php if (isset($_SESSION['user_id'])): ?>
-    <a href="user-profile.php"><?= htmlspecialchars($_SESSION['user_name']) ?></a>
-    <a href="logout.php" class="sign-out-btn">Sign Out</a>
+  <?php if (isset($_SESSION['user_id'])): 
+    $user_name = $_SESSION['user_name'];
+    $initials = strtoupper(substr($user_name, 0, 2));
+  ?>
+    <div class="user-profile">
+      <div class="user-avatar"><?= htmlspecialchars($initials) ?></div>
+      <div class="user-name"><?= htmlspecialchars($user_name) ?></div>
+      <div class="dropdown-arrow">▼</div>
+      <div class="user-dropdown">
+        <a href="user-profile.php">My Profile</a>
+        <a href="logout.php">Sign Out</a>
+      </div>
+    </div>
   <?php else: ?>
     <a href="login.php" class="sign-in-btn">Sign In</a>
   <?php endif; ?>
 </nav>
+
 
     </header>
 
@@ -94,7 +137,7 @@ session_start();
                     <div class="tool-icon">
                         <img src="images/calendar.png" alt="Calendar Icon">
                     </div>
-                    <a href="ovulation-tracker.php" class="tool-button">
+                    <a href="Tracker/ovulation-tracker.php" class="tool-button">
                         Ovulation Tracker
                     </a>
                 </div>
@@ -110,7 +153,7 @@ session_start();
                     <div class="tool-icon">
                         <img src="images/baby.png" alt="Baby Icon">
                     </div>
-                    <a href="due-date-calculator.php" class="tool-button">
+                    <a href="Tracker/due-date-calculator.php" class="tool-button">
                         Due Date Calculator
                     </a>
                 </div>
@@ -130,9 +173,9 @@ session_start();
     <div class="footer-column">
       <h4>Tools</h4>
       <ul>
-        <li><a href="tools.php">Ovulation Tracker</a></li>
+        <li><a href="Tracker/ovulation-tracker.php">Ovulation Tracker</a></li>
         <li><a href="reminder.php">Reminder</a></li>
-        <li><a href="due-date-calculator.php">Due Date Calculator</a></li>
+        <li><a href="Tracker/due-date-calculator.php">Due Date Calculator</a></li>
       </ul>
     </div>
 
@@ -152,6 +195,14 @@ session_start();
   </div>
 </footer>
 
+<script>
+    const popup = document.querySelector('.success-popup');
+    if (popup) {
+        setTimeout(() => {
+            popup.remove();
+        }, 3000);
+    }
+</script>
 
 
 
