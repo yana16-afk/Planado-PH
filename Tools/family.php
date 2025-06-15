@@ -8,30 +8,33 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+
     .banner_family {
-      border-radius: 20px;
-      margin: 2rem auto;
-      padding: 4rem;
-      background-image: url('images/banner_contra.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      box-shadow: 0 4px 20px rgba(56, 14, 91, 0.09);
-      width: 100%;
-      max-width: 1400px;
+        border-radius: 20px;
+  margin: 2rem auto;
+  padding: 4rem;
+  background-image: url('images/banner_contra.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 20px rgba(56, 14, 91, 0.09);
+  width: 100%;
+  max-width: 1600px;
     }
 
     .banner_family-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
+        position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
     }
 
     .banner_family-text {
       flex: 1;
-      max-width: 600px;
+      max-width: 900px;
     }
 
     .banner_family-text h1 {
@@ -51,14 +54,14 @@
 
     .family-banner-image {
       width: 400px;
-      height: 260px;
+      height: 250px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .family-banner-image img {
-      width: 80%;
+      width: 100%;
       height: auto;
       object-fit: contain;
     }
@@ -176,7 +179,12 @@
   <div class="banner_family-content">
     <div class="banner_family-text">
       <h1>Supporting Every Family’s Journey</h1>
-      <p>Family planning empowers individuals and couples to determine the timing and spacing of their children. This section covers essential information on rights, services, and policies in the Philippines to promote reproductive health and well-being.</p>
+      <p>
+  Family planning is a vital foundation for building healthier families and stronger communities. It allows individuals and couples to freely and responsibly determine the number and spacing of their children—leading to improved maternal and child health, greater educational and economic opportunities, and stronger support for women's rights. </p>
+<p style="font-style: italic; text-align: center; color: #B75196; margin-top: 1.5rem;">
+  “With family planning, every child is a choice, not a chance.”
+</p>
+
     </div>
     <div class="family-banner-image">
       <img src="images/family-illustration.png" alt="Family Planning Banner">

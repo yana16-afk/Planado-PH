@@ -18,7 +18,7 @@
   background-repeat: no-repeat;
   box-shadow: 0 4px 20px rgba(56, 14, 91, 0.09);
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
 }
 
 .banner_youth-content {
