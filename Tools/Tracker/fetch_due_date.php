@@ -8,7 +8,8 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 try {
-    require 'db_connection.php'; // make sure this is correct
+    // Use the same database connection file as your other scripts
+    require_once '../planado_db.php'; // or use 'db.php' if that's your main connection file
 
     $stmt = $pdo->prepare("SELECT due_date FROM due_dates WHERE user_id = ? LIMIT 1");
     $stmt->execute([$_SESSION['user_id']]);
@@ -20,5 +21,6 @@ try {
         echo json_encode(['success' => false, 'error' => 'No due date found']);
     }
 } catch (Exception $e) {
-    echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+    echo json_encode(['success' => false, 'error' => 'Database error: ' . $e->getMessage()]);
 }
+?>

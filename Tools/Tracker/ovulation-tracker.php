@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ovulation Tracker - All Months</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
     body {
         font-family: 'Poppins', sans-serif;
@@ -64,17 +64,19 @@ if (!isset($_SESSION['user_id'])) {
 
     h1{
         text-align: center;
-        margin-bottom: 20px;
-        font-size: 2.5rem;
         color: #66173D;
+        font-family: 'Fredoka', sans-serif;
+        font-size: 3.5rem;
+        color: #66173D;
+        margin-bottom: 1rem;
+        line-height: 1.2;
     }
-    .banner p {
-        font-size: 1.3rem;
-        color: #B75196;
-        margin-bottom: 2rem;
-        line-height: 1.5;
-        padding: 0 20px;
+    p {
         text-align: center;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        font-size: 1.1rem;
+        color: #B75196;
     }
 
     .cycle-info {

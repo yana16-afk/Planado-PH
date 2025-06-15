@@ -21,7 +21,7 @@ function ordinal($n) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Due Date Calculator</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -56,40 +56,91 @@ function ordinal($n) {
     }
     main {
       padding: 2rem 4rem;
-      max-width: 700px;
+      max-width: 1200px;
       margin: 0 auto;
     }
-    h1 {
+    h1{
       text-align: center;
+      color: #66173D;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3.5rem;
+      color: #66173D;
       margin-bottom: 2rem;
-      font-size: 2.5rem;
+      line-height: 1.2;
     }
-    form {
+    p {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        font-size: 1.1rem;
+        color: #B75196;
+    }
+    
+    .content-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    
+    .calculator-section {
       background: #fff;
       padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      height: fit-content;
     }
+    
+    .summary-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(162, 27, 71, 0.15);
+      height: fit-content;
+    }
+    
+    .calculator-section h2 {
+      color: #66173D;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .summary-section h2 {
+      color: #66173D;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
     label {
       display: block;
       margin-bottom: 0.5rem;
       font-weight: 500;
     }
     select, button {
+      font-family: 'Fredoka', sans-serif;
       width: 100%;
       padding: 0.75rem;
       margin-bottom: 1.5rem;
       font-size: 1rem;
-      border-radius: 8px;
+      border-radius: 25px;
       border: 1px solid #ccc;
+      color: #66173D;
+
     }
     button {
       background: #66173D;
-      color: #fff;
-      font-weight: bold;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      font-weight: 600;
       border: none;
       cursor: pointer;
-      transition: background 0.3s ease;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
     }
     button:hover {
       background: #aa185f;
@@ -103,18 +154,9 @@ function ordinal($n) {
       display: none;
       margin-top: 10px;
     }
-    .cycle-info {
-      background: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 30px;
-      box-shadow: 0 0 15px rgba(162, 27, 71, 0.15);
-      max-width: 800px;
-      margin: 30px auto;
-    }
     .cycle-stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: 1fr;
       gap: 15px;
       margin-bottom: 20px;
     }
@@ -126,7 +168,7 @@ function ordinal($n) {
       border: 1px solid #f7c6d5;
     }
     .stat-number {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: #9e1b45;
       display: block;
@@ -163,9 +205,108 @@ function ordinal($n) {
     .delete-section {
       text-align: center;
       display: none;
+      
     }
     .delete-section.show {
       display: block;
+    }
+
+    #delete-due-date {
+      background: #66173D;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    #delete-due-date:hover {
+      background: #aa185f;
+    }
+
+    @media (max-width: 768px) {
+      .content-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      main {
+        padding: 1rem 2rem;
+      }
+      
+      .header {
+        padding: 1rem 2rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .calculator-section h2,
+      .summary-section h2 {
+        font-size: 1.5rem;
+      }
+      
+      .cycle-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+      
+      .stat-box {
+        text-align: center;
+        padding: 15px;
+        background: #fef7f8;
+        border-radius: 8px;
+        border: 1px solid #f7c6d5;
+      }
+      
+      .stat-number {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #9e1b45;
+        display: block;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .nav a {
+        font-size: 1.1rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .calculator-section,
+      .summary-section {
+        padding: 1.5rem;
+      }
+    }
+    .cancel-btn {
+      background: rgb(140, 91, 115);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .cancel-btn:hover {
+      background: rgb(100, 65, 85); /* Darker on hover */
     }
   </style>
 </head>
@@ -174,55 +315,68 @@ function ordinal($n) {
     <div class="logo"><img src="../images/logo.png" alt="Logo" class="logo-icon"></div>
     <nav class="nav">
       <a href="../index.php">Home</a>
-      <a href="calendar.php">Ovulation Tracker</a>
+      <a href="ovulation-tracker.php">Ovulation Tracker</a>
       <a href="due-date-calculator.php" class="active">Due-date Calculator</a>
     </nav>
   </header>
 
   <main>
     <h1>Pregnancy Due Date Calculator</h1>
+    <p>
+      This tool helps expectant parents estimate their baby's due date based on the conception timeframe. 
+      By selecting the approximate week of conception, you'll receive a projected due date along with a pregnancy timeline summary.
+    </p>
 
-    <form id="dueDateForm">
-      <label for="year">Select Year:</label>
-      <select id="year" name="year" required>
-        <?php for ($y = date('Y'); $y <= date('Y') + 2; $y++): ?>
-          <option value="<?= $y ?>"><?= $y ?></option>
-        <?php endfor; ?>
-      </select>
+    <div class="content-container">
 
-      <label for="month">Select Month:</label>
-      <select id="month" name="month" required>
-        <?php foreach (range(1, 12) as $m): ?>
-          <option value="<?= $m ?>"><?= date('F', mktime(0, 0, 0, $m, 10)) ?></option>
-        <?php endforeach; ?>
-      </select>
+      <div class="calculator-section">
+        <h2>Calculate Your Due Date</h2>
+        
+        <form id="dueDateForm">
+          <label for="year">Select Year:</label>
+          <select id="year" name="year" required>
+            <?php for ($y = date('Y'); $y <= date('Y') + 2; $y++): ?>
+              <option value="<?= $y ?>"><?= $y ?></option>
+            <?php endfor; ?>
+          </select>
 
-      <label for="week">Select Week of the Month:</label>
-      <select id="week" name="week" required>
-        <option value="1">1st Week</option>
-        <option value="2">2nd Week</option>
-        <option value="3">3rd Week</option>
-        <option value="4">4th Week</option>
-        <option value="5">5th Week</option>
-      </select>
+          <label for="month">Select Month:</label>
+          <select id="month" name="month" required>
+            <?php foreach (range(1, 12) as $m): ?>
+              <option value="<?= $m ?>"><?= date('F', mktime(0, 0, 0, $m, 10)) ?></option>
+            <?php endforeach; ?>
+          </select>
 
-      <button type="submit">See Expected Due Date</button>
-    </form>
+          <label for="week">Select Week of the Month:</label>
+          <select id="week" name="week" required>
+            <option value="1">1st Week</option>
+            <option value="2">2nd Week</option>
+            <option value="3">3rd Week</option>
+            <option value="4">4th Week</option>
+            <option value="5">5th Week</option>
+          </select>
 
-    <div class="info-msg" id="msg-box"></div>
+          <button type="submit">Calculate Due Date</button>
+        </form>
 
-    <div class="cycle-info">
-      <h2 style="text-align:center;">Pregnancy Summary</h2>
-      <div class="cycle-stats" id="due-stats">
-        <div class="no-data-message">
-          <p>No due date data available.</p>
-          <p>Calculate your due date above to see your pregnancy summary.</p>
-        </div>
+        <div class="info-msg" id="msg-box"></div>
       </div>
-      <div class="delete-section" id="delete-section">
-        <button id="delete-due-date" style="background:#e0474c; color:#fff; padding:10px 20px; border:none; border-radius:8px; font-weight:600; cursor:pointer;">
-          Delete Due Date
-        </button>
+
+      <div class="summary-section">
+        <h2>Pregnancy Summary</h2>
+        
+        <div class="cycle-stats" id="due-stats">
+          <div class="no-data-message">
+            <p>No due date data available.</p>
+            <p>Calculate your due date to see your pregnancy summary.</p>
+          </div>
+        </div>
+        
+        <div class="delete-section" id="delete-section">
+          <button id="delete-due-date">
+            Delete Due Date
+          </button>
+        </div>
       </div>
     </div>
   </main>
@@ -230,8 +384,8 @@ function ordinal($n) {
   <div id="deleteModal">
     <div>
       <p>Are you sure you want to delete your saved due date?</p>
-      <button id="confirmDelete" style="background:#e0474c; color:#fff; padding:10px 20px; border:none; border-radius:5px; margin-right: 10px;">Yes, Delete</button>
-      <button id="cancelDelete" style="background:#ccc; color:#333; padding:10px 20px; border:none; border-radius:5px;">Cancel</button>
+      <button id="confirmDelete">Yes, Delete</button>
+      <button id="cancelDelete" class="cancel-btn">Cancel</button>
     </div>
   </div>
 
@@ -256,8 +410,6 @@ function ordinal($n) {
         <div class="stat-box"><span class="stat-number">${daysRemaining >= 0 ? daysRemaining : 'Overdue'}</span><div class="stat-label">Days Remaining</div></div>
         <div class="stat-box"><span class="stat-number">${trimester}</span><div class="stat-label">Trimester</div></div>
       `;
-      
-      // Show delete button
       document.getElementById('delete-section').classList.add('show');
     }
 
@@ -265,11 +417,9 @@ function ordinal($n) {
       document.getElementById('due-stats').innerHTML = `
         <div class="no-data-message">
           <p>No due date data available.</p>
-          <p>Calculate your due date above to see your pregnancy summary.</p>
+          <p>Calculate your due date to see your pregnancy summary.</p>
         </div>
       `;
-      
-      // Hide delete button
       document.getElementById('delete-section').classList.remove('show');
     }
 
@@ -330,8 +480,6 @@ function ordinal($n) {
           showMessage('Error calculating due date.', true);
         }
       });
-
-      // Delete modal logic
       document.getElementById('delete-due-date').onclick = () => {
         document.getElementById('deleteModal').style.display = 'flex';
       };
@@ -358,8 +506,6 @@ function ordinal($n) {
         
         document.getElementById('deleteModal').style.display = 'none';
       };
-
-      // Close modal when clicking outside
       document.getElementById('deleteModal').onclick = (e) => {
         if (e.target === document.getElementById('deleteModal')) {
           document.getElementById('deleteModal').style.display = 'none';
