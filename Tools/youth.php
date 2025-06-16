@@ -13,23 +13,23 @@
   <style>
 .banner_youth {
   border-radius: 20px;
-  margin: 2rem auto;
-  padding: 4rem;
-  background-image: url('images/banner_contra.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: 0 4px 20px rgba(56, 14, 91, 0.09);
-  width: 100%;
-  max-width: 1600px;
+      margin: 2rem 4rem;
+      padding: 4rem;
+      background-image: url('images/banner_contra.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: 0 4px 20px rgba(56, 14, 91, 0.09);
 }
 
 .banner_youth-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
+  position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
 }
 
 .banner_youth-text {
